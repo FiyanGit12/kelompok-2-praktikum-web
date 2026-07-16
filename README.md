@@ -101,6 +101,20 @@ http://localhost:8080
 - Sebelum mulai coding, jalankan `git pull` dulu biar sinkron
 - Kalau ada perubahan struktur database, jangan lupa export ulang `db_kampus.sql` dan update di folder `database/`
 
+### 📝 Pembagian Tugas
+
+| Nama    | Tugas                               | File                                                                                                                     |
+| ------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Atih    | Form edit data mahasiswa            | `app/Views/crud/edit.php`                                                                                                |
+| Eka     | Styling CRUD                        | `public/assets/css/crud.css`                                                                                             |
+| Afra    | Halaman detail/lihat data mahasiswa | `app/Views/crud/view.php`                                                                                                |
+| Devin   | Fitur upload data mahasiswa         | `app/Views/crud/upload.php`                                                                                              |
+| Alfiyan | Controller, Model, Layout dasar     | `app/Controllers/Crud.php`, `app/Controllers/Home.php`, `app/Views/layout/template.php`, `app/Models/MahasiswaModel.php` |
+
+> Catatan: file yang belum dibuat oleh anggota lain (`edit.php`, `view.php`, `upload.php`) sengaja belum ada di repo ini. Silakan buat file barunya di lokasi yang sesuai tabel di atas, lalu commit & push ke branch `main` (atau buat branch sendiri lalu Pull Request).
+>
+> Pastikan cek `app/Controllers/Crud.php` untuk melihat method mana yang sudah memanggil view tersebut (misalnya `return view('crud/edit', ...)`), supaya file yang dibuat sesuai dengan data yang dikirim controller.
+
 ## 🛠️ Tech Stack
 
 - **Framework:** CodeIgniter 4
