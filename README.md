@@ -1,123 +1,201 @@
-# Student Manager — CRUD Mahasiswa (CodeIgniter 4)
+# 🐾 PawStore — Sistem Manajemen Produk Petshop
 
-Aplikasi CRUD data mahasiswa menggunakan CodeIgniter 4, dibuat untuk tugas Praktikum Web Programming (Bab 5 & Bab 6).
+> Aplikasi CRUD produk Petshop menggunakan **CodeIgniter 4**, dibuat untuk tugas **Praktikum Web Programming Bab 5** (CRUD & Model pada CI4).
 
-## 🧰 Requirement
+---
 
-Sebelum menjalankan project ini, pastikan sudah terinstall:
+## 🎯 Fitur Aplikasi
+
+| Fitur             | Keterangan                                                        |
+| ----------------- | ----------------------------------------------------------------- |
+| ✅ **Create**     | Tambah produk baru via form dengan preview gambar                 |
+| ✅ **Read**       | Tampilkan semua produk dalam tabel responsif                      |
+| ✅ **Update**     | Edit produk langsung lewat **modal popup** (tanpa pindah halaman) |
+| ✅ **Delete**     | Hapus produk dengan modal konfirmasi                              |
+| 🎨 **UI Premium** | Hero section, badge kategori, stok indicator, animasi AOS         |
+| 📱 **Responsive** | Tampil rapi di desktop & mobile                                   |
+
+---
+
+## 🧰 Tech Stack
+
+| Layer        | Teknologi                                           |
+| ------------ | --------------------------------------------------- |
+| **Backend**  | CodeIgniter 4 (PHP 8.1+)                            |
+| **Database** | MySQL via XAMPP / phpMyAdmin                        |
+| **Styling**  | Tailwind CSS (CDN) + Custom CSS (peach/cream theme) |
+| **Animasi**  | AOS — Animate On Scroll                             |
+| **Font**     | Plus Jakarta Sans + Nunito (Google Fonts)           |
+
+---
+
+## 🗄️ Struktur Database
+
+**Database:** `db_petshop` — **Tabel:** `tb_produk`
+
+| Field         | Tipe                  | Keterangan                           |
+| ------------- | --------------------- | ------------------------------------ |
+| `id_produk`   | INT AUTO_INCREMENT PK | Primary key                          |
+| `nama_produk` | VARCHAR(100)          | Nama produk (cth: Royal Canin)       |
+| `kategori`    | VARCHAR(50)           | Makanan / Aksesoris / Obat / Kandang |
+| `harga`       | INT                   | Harga dalam Rupiah                   |
+| `stok`        | INT                   | Jumlah stok tersedia                 |
+| `deskripsi`   | TEXT                  | Deskripsi singkat produk             |
+| `gambar`      | VARCHAR(255)          | URL/path gambar produk               |
+
+---
+
+## 🚀 Cara Setup & Menjalankan
+
+### 1. Requirement
+
+Pastikan sudah terinstall:
 
 - [XAMPP](https://www.apachefriends.org/) (Apache + MySQL)
-- [PHP](https://www.php.net/) minimal versi 8.1
+- PHP minimal versi **8.1**
 - [Composer](https://getcomposer.org/)
 - Git
 
-## 🚀 Langkah Setup Project
-
-### 1. Clone repository
+### 2. Clone Repository
 
 ```bash
-git clone https://github.com/username/nama-repo.git
-cd nama-repo
+git clone https://github.com/FiyanGit12/kelompok-2-praktikum-web.git
+cd kelompok-2-praktikum-web
 ```
 
-### 2. Install dependency (Composer)
+### 3. Install Dependency
 
 ```bash
 composer install
 ```
 
-### 3. Nyalakan XAMPP
+### 4. Nyalakan XAMPP
 
-Buka **XAMPP Control Panel**, lalu start service:
+Buka **XAMPP Control Panel**, start:
 
-- **Apache**
-- **MySQL**
+- ✅ **Apache**
+- ✅ **MySQL**
 
-### 4. Import Database
+### 5. Generate Database (Pilih salah satu cara)
 
-1. Buka browser, akses phpMyAdmin:
-   ```
-   http://localhost/phpmyadmin
-   ```
-2. Klik **New/Baru** di sidebar kiri untuk membuat database baru
-3. Beri nama database: `db_kampus`, lalu klik **Create/Buat**
-4. Setelah database `db_kampus` terbuat, klik database tersebut, lalu buka tab **Import**
-5. Klik **Choose File**, pilih file `database/db_kampus.sql` dari folder project ini
-6. Scroll ke bawah, klik tombol **Go/Kirim**
-7. Tunggu sampai muncul pesan sukses — tabel `tb_mahasiswa` akan otomatis terbentuk beserta datanya
+#### Cara A — Import via phpMyAdmin (Manual)
 
-### 5. Konfigurasi `.env`
+1. Buka `http://localhost/phpmyadmin`
+2. Klik **New** → beri nama `db_petshop` → **Create**
+3. Klik database `db_petshop` → tab **Import**
+4. Pilih file `Database/db_petshop.sql` → klik **Go**
+5. Tabel `tb_produk` dan 6 data contoh akan otomatis terbuat ✅
 
-Copy file `env` menjadi `.env` (kalau belum ada):
+#### Cara B — via MySQL CLI (Cepat)
 
 ```bash
-cp env .env
+# XAMPP
+C:\xampp\mysql\bin\mysql.exe -u root < Database/db_petshop.sql
+
+# Laragon / MySQL biasa
+mysql -u root < Database/db_petshop.sql
 ```
 
-Buka file `.env`, cari bagian berikut dan sesuaikan (biasanya cukup uncomment/hapus tanda `#` di depannya):
+### 6. Konfigurasi `.env`
+
+Buka file `.env` dan pastikan bagian database sudah seperti ini:
 
 ```env
 CI_ENVIRONMENT = development
 
 database.default.hostname = localhost
-database.default.database = db_kampus
+database.default.database = db_petshop
 database.default.username = root
 database.default.password =
 database.default.DBDriver = MySQLi
-database.default.port = 3306
+database.default.port     = 3306
 ```
 
-> Catatan: default XAMPP biasanya `username = root` dan `password` kosong. Sesuaikan kalau MySQL kamu pakai password.
+> **Catatan:** Default XAMPP: `username = root`, `password` kosong. Sesuaikan jika berbeda.
 
-### 6. Jalankan server
+### 7. Jalankan Server
 
 ```bash
 php spark serve
 ```
 
-Buka browser ke:
+Buka browser:
 
 ```
 http://localhost:8080
 ```
 
+---
+
 ## 📁 Struktur Folder Penting
 
 ```
+WEB_BAB_5/
 ├── app/
-│   ├── Controllers/     # Logic CRUD
-│   ├── Models/          # Model tb_mahasiswa
-│   └── Views/           # Tampilan (crud.php, edit.php, dll)
-├── database/
-│   └── db_kampus.sql    # File export database — WAJIB diimport sebelum run
+│   ├── Controllers/
+│   │   ├── Produk.php          ← Controller CRUD (index, tambah, edit, hapus)
+│   │   └── Home.php            ← Redirect ke /produk
+│   ├── Models/
+│   │   └── ProdukModel.php     ← Model tb_produk
+│   └── Views/
+│       ├── layout/
+│       │   └── template.php    ← Layout utama (navbar, footer, AOS)
+│       └── produk/
+│           ├── index.php       ← Hero + tabel + modal edit & delete
+│           └── tambah.php      ← Form tambah produk
 ├── public/
-│   └── assets/css/      # File CSS custom (crud.css)
+│   └── assets/
+│       ├── css/
+│       │   └── petshop.css     ← Custom CSS (tema peach/cream)
+│       └── img/
+│           └── hero-pets.png   ← Ilustrasi chibi hero section
+├── Database/
+│   └── db_petshop.sql          ← SQL create table + sample data
+├── .env                        ← Konfigurasi database
 └── README.md
 ```
 
-## 👥 Kolaborasi (Bab 6)
+---
 
-- Setiap anggota kerja di branch masing-masing, lalu ajukan **Pull Request** ke `main`
-- Sebelum mulai coding, jalankan `git pull` dulu biar sinkron
-- Kalau ada perubahan struktur database, jangan lupa export ulang `db_kampus.sql` dan update di folder `database/`
+## 🌐 Routing
 
-### 📝 Pembagian Tugas
+| Method | URL                 | Controller     | Fungsi              |
+| ------ | ------------------- | -------------- | ------------------- |
+| GET    | `/`                 | Produk::index  | Redirect ke /produk |
+| GET    | `/produk`           | Produk::index  | Tampil semua produk |
+| GET    | `/produk/tambah`    | Produk::tambah | Form tambah         |
+| POST   | `/produk/tambah`    | Produk::tambah | Proses simpan       |
+| GET    | `/produk/edit/:id`  | Produk::edit   | Load data ke modal  |
+| POST   | `/produk/edit/:id`  | Produk::edit   | Proses update       |
+| GET    | `/produk/hapus/:id` | Produk::hapus  | Proses hapus        |
 
-| Nama    | Tugas                               | File                                                                                                                     |
-| ------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| Atih    | Form edit data mahasiswa            | `app/Views/crud/edit.php`                                                                                                |
-| Eka     | Styling CRUD                        | `public/assets/css/crud.css`                                                                                             |
-| Afra    | Halaman detail/lihat data mahasiswa | `app/Views/crud/view.php`                                                                                                |
-| Devin   | Fitur upload data mahasiswa         | `app/Views/crud/upload.php`                                                                                              |
-| Alfiyan | Controller, Model, Layout dasar     | `app/Controllers/Crud.php`, `app/Controllers/Home.php`, `app/Views/layout/template.php`, `app/Models/MahasiswaModel.php` |
+---
 
-> Catatan: file yang belum dibuat oleh anggota lain (`edit.php`, `view.php`, `upload.php`) sengaja belum ada di repo ini. Silakan buat file barunya di lokasi yang sesuai tabel di atas, lalu commit & push ke branch `main` (atau buat branch sendiri lalu Pull Request).
+## 👥 Pembagian Tugas Kelompok 2
+
+| Nama        | Tugas                              | File                                          |
+| ----------- | ---------------------------------- | --------------------------------------------- |
+| **Alfiyan** | Controller, Model, Layout, Routing | `Produk.php`, `ProdukModel.php`, `Routes.php` |
+| **Atih**    | View form edit (modal)             | `produk/index.php`                            |
+| **Eka**     | Styling & CSS petshop theme        | `public/assets/css/petshop.css`               |
+| **Afra**    | Tampilan utama                     | `layout/template.php`                         |
+| **Devin**   | View form tambah produk            | `produk/tambah.php`                           |
+
+> **Tips kolaborasi:**
 >
-> Pastikan cek `app/Controllers/Crud.php` untuk melihat method mana yang sudah memanggil view tersebut (misalnya `return view('crud/edit', ...)`), supaya file yang dibuat sesuai dengan data yang dikirim controller.
+> - Setiap anggota kerja di branch masing-masing, lalu ajukan **Pull Request** ke `main`
+> - Jalankan `git pull` sebelum mulai coding
+> - Jika ada perubahan struktur DB, export ulang `db_petshop.sql` dan update ke folder `Database/`
 
-## 🛠️ Tech Stack
+---
 
-- **Framework:** CodeIgniter 4
-- **Database:** MySQL (XAMPP)
-- **Styling:** Tailwind CSS (CDN) + Custom CSS
-- **Animasi:** AOS (Animate On Scroll)
+## 🛠️ Development Notes
+
+- Edit modal menggunakan **vanilla JS** — tidak perlu library tambahan
+- Delete modal menampilkan nama produk yang akan dihapus sebelum konfirmasi
+- Stok badge otomatis berubah warna: 🟢 aman (>20) · 🟡 sedang (6–20) · 🔴 rendah (≤5)
+- Gambar produk mendukung URL eksternal — jika kosong, tampil emoji kategori sebagai fallback
+
+---
+
+_© 2025 Kelompok 2 — Praktikum Web Programming · CodeIgniter 4 · PHP · MySQL_

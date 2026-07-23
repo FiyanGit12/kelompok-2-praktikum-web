@@ -3,10 +3,14 @@
 use CodeIgniter\Router\RouteCollection;
 
 /** @var RouteCollection $routes */
-$routes->get('/', 'Home::index');
-$routes->get('/crud', 'Crud::index');
-$routes->get('/crud/tambah', 'Crud::tambah');
-$routes->post('/crud/tambah', 'Crud::tambah');
-$routes->get('/crud/hapus/(:segment)', 'Crud::hapus/$1');
-$routes->get('/crud/edit/(:segment)', 'Crud::edit/$1');
-$routes->post('/crud/editan', 'Crud::editan');
+
+// Home → redirect ke produk
+$routes->get('/', 'Produk::index');
+
+// ─── Produk CRUD ────────────────────────────────────────
+$routes->get('/produk',                  'Produk::index');
+$routes->get('/produk/tambah',           'Produk::tambah');
+$routes->post('/produk/tambah',          'Produk::tambah');
+$routes->get('/produk/edit/(:segment)',  'Produk::edit/$1');
+$routes->post('/produk/edit/(:segment)', 'Produk::edit/$1');
+$routes->get('/produk/hapus/(:segment)', 'Produk::hapus/$1');
