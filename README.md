@@ -175,7 +175,7 @@ WEB_BAB_5/
 
 | Nama        | Tugas                              | File                                          |
 | ----------- | ---------------------------------- | --------------------------------------------- |
-| **Alfiyan** | Controller, Model, Layout, Routing | `Produk.php`, `ProdukModel.php`, `Routes.php` |
+| **Alfiyan** | Controller, Model, Routing | `Produk.php`, `ProdukModel.php`, `Routes.php` |
 | **Atih**    | View form edit dan delete (modal)             | `produk/index.php`                            |
 | **Eka**     | Styling & CSS petshop theme        | `public/assets/css/petshop.css`               |
 | **Afra**    | Tampilan utama                     | `layout/template.php`                         |
